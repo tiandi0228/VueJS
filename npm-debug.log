@@ -1,0 +1,146 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@2.15.9
+3 info using node@v4.5.0
+4 verbose readDependencies loading dependencies from /Users/sunyuchun/Desktop/VueJs/package.json
+5 warn package.json VueClub@1.0.0 No repository field.
+6 warn package.json VueClub@1.0.0 No README data
+7 verbose install where, deps [ '/Users/sunyuchun/Desktop/VueJs',
+7 verbose install   [ 'babel',
+7 verbose install     'babel-core',
+7 verbose install     'babel-loader',
+7 verbose install     'babel-plugin-transform-runtime',
+7 verbose install     'babel-preset-es2015',
+7 verbose install     'babel-runtime',
+7 verbose install     'css-loader',
+7 verbose install     'node-sass',
+7 verbose install     'sass-loader',
+7 verbose install     'vue-hot-reload-api',
+7 verbose install     'vue-html-loader',
+7 verbose install     'vue-loader',
+7 verbose install     'vue-style-loader',
+7 verbose install     'webpack',
+7 verbose install     'webpack-dev-server',
+7 verbose install     'style-loader',
+7 verbose install     'vue',
+7 verbose install     'vue-resource',
+7 verbose install     'vue-router' ] ]
+8 verbose install where, peers [ '/Users/sunyuchun/Desktop/VueJs', [] ]
+9 verbose installManyTop reading for lifecycle /Users/sunyuchun/Desktop/VueJs/package.json
+10 info preinstall VueClub@1.0.0
+11 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel/package.json
+12 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-core/package.json
+13 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-loader/package.json
+14 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-plugin-transform-runtime/package.json
+15 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-preset-es2015/package.json
+16 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-runtime/package.json
+17 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/css-loader/package.json
+18 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/node-sass/package.json
+19 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/sass-loader/package.json
+20 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/style-loader/package.json
+21 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue/package.json
+22 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-hot-reload-api/package.json
+23 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-html-loader/package.json
+24 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-loader/package.json
+25 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-resource/package.json
+26 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-router/package.json
+27 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-style-loader/package.json
+28 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/webpack/package.json
+29 verbose installManyTop reading scoped package data from /Users/sunyuchun/Desktop/VueJs/node_modules/webpack-dev-server/package.json
+30 info package.json vue-html-loader@1.2.3 No license field.
+31 verbose readDependencies loading dependencies from /Users/sunyuchun/Desktop/VueJs/package.json
+32 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel/package.json
+33 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-core/package.json
+34 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-loader/package.json
+35 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-plugin-transform-runtime/package.json
+36 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-preset-es2015/package.json
+37 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/babel-runtime/package.json
+38 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/css-loader/package.json
+39 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/node-sass/package.json
+40 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/sass-loader/package.json
+41 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/style-loader/package.json
+42 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue/package.json
+43 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-hot-reload-api/package.json
+44 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-html-loader/package.json
+45 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-loader/package.json
+46 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-resource/package.json
+47 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-router/package.json
+48 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/vue-style-loader/package.json
+49 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/webpack/package.json
+50 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/webpack-dev-server/package.json
+51 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/.bin/babel/package.json
+52 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/.bin/babel-external-helpers/package.json
+53 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/.bin/babel-node/package.json
+54 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/.bin/node-sass/package.json
+55 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/.bin/webpack/package.json
+56 verbose targetResolver reading package data from /Users/sunyuchun/Desktop/VueJs/node_modules/.bin/webpack-dev-server/package.json
+57 verbose already installed skipping babel-preset-es2015@^6.14.0 /Users/sunyuchun/Desktop/VueJs
+58 verbose already installed skipping babel-runtime@^6.11.6 /Users/sunyuchun/Desktop/VueJs
+59 verbose already installed skipping css-loader@^0.24.0 /Users/sunyuchun/Desktop/VueJs
+60 verbose already installed skipping node-sass@^3.8.0 /Users/sunyuchun/Desktop/VueJs
+61 verbose already installed skipping sass-loader@^4.0.0 /Users/sunyuchun/Desktop/VueJs
+62 verbose already installed skipping vue-hot-reload-api@^2.0.6 /Users/sunyuchun/Desktop/VueJs
+63 verbose already installed skipping vue-html-loader@^1.2.3 /Users/sunyuchun/Desktop/VueJs
+64 verbose already installed skipping vue-loader@^8.5.2 /Users/sunyuchun/Desktop/VueJs
+65 verbose already installed skipping vue-style-loader@^1.0.0 /Users/sunyuchun/Desktop/VueJs
+66 verbose already installed skipping webpack@^1.13.2 /Users/sunyuchun/Desktop/VueJs
+67 verbose already installed skipping webpack-dev-server@^1.15.0 /Users/sunyuchun/Desktop/VueJs
+68 verbose already installed skipping style-loader@^0.13.1 /Users/sunyuchun/Desktop/VueJs
+69 verbose already installed skipping vue@^1.0.26 /Users/sunyuchun/Desktop/VueJs
+70 verbose already installed skipping vue-resource@^0.9.3 /Users/sunyuchun/Desktop/VueJs
+71 verbose already installed skipping vue-router@^0.7.13 /Users/sunyuchun/Desktop/VueJs
+72 verbose already installed skipping babel@^6.5.2 /Users/sunyuchun/Desktop/VueJs
+73 verbose already installed skipping babel-core@^6.14.0 /Users/sunyuchun/Desktop/VueJs
+74 verbose already installed skipping babel-loader@^6.2.5 /Users/sunyuchun/Desktop/VueJs
+75 verbose already installed skipping babel-plugin-transform-runtime@^6.12.0 /Users/sunyuchun/Desktop/VueJs
+76 silly install resolved []
+77 info build /Users/sunyuchun/Desktop/VueJs
+78 info linkStuff VueClub@1.0.0
+79 silly linkStuff VueClub@1.0.0 has /Users/sunyuchun/Desktop as its parent node_modules
+80 verbose linkBins VueClub@1.0.0
+81 verbose linkMans VueClub@1.0.0
+82 verbose rebuildBundles VueClub@1.0.0
+83 verbose rebuildBundles [ '.bin',
+83 verbose rebuildBundles   'babel',
+83 verbose rebuildBundles   'babel-core',
+83 verbose rebuildBundles   'babel-loader',
+83 verbose rebuildBundles   'babel-plugin-transform-runtime',
+83 verbose rebuildBundles   'babel-preset-es2015',
+83 verbose rebuildBundles   'babel-runtime',
+83 verbose rebuildBundles   'css-loader',
+83 verbose rebuildBundles   'node-sass',
+83 verbose rebuildBundles   'sass-loader',
+83 verbose rebuildBundles   'style-loader',
+83 verbose rebuildBundles   'vue',
+83 verbose rebuildBundles   'vue-hot-reload-api',
+83 verbose rebuildBundles   'vue-html-loader',
+83 verbose rebuildBundles   'vue-loader',
+83 verbose rebuildBundles   'vue-resource',
+83 verbose rebuildBundles   'vue-router',
+83 verbose rebuildBundles   'vue-style-loader',
+83 verbose rebuildBundles   'webpack',
+83 verbose rebuildBundles   'webpack-dev-server' ]
+84 info install VueClub@1.0.0
+85 info postinstall VueClub@1.0.0
+86 info prepublish VueClub@1.0.0
+87 verbose validateInstall loading /Users/sunyuchun/Desktop/VueJs/package.json for validation
+88 verbose stack Error: The package vue-hot-reload-api@2.0.6 does not satisfy its siblings' peerDependencies requirements!
+88 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:125:32
+88 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:268:7
+88 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:142:5
+88 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+88 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+88 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+88 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+88 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+88 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+88 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+89 verbose cwd /Users/sunyuchun/Desktop/VueJs
+90 error Darwin 15.6.0
+91 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install"
+92 error node v4.5.0
+93 error npm  v2.15.9
+94 error code EPEERINVALID
+95 error peerinvalid The package vue-hot-reload-api@2.0.6 does not satisfy its siblings' peerDependencies requirements!
+95 error peerinvalid Peer vue-loader@8.5.2 wants vue-hot-reload-api@^1.2.0
+96 verbose exit [ 1, true ]

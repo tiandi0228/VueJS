@@ -1,7 +1,12 @@
 <template>
 	<header class="bar bar-nav bar-easy-vue">
+		<div class=" pull-left" @click="sidebar">
+			<i class="fa fa-navicon"></i>
+		</div>
+		<div class="pull-right">
+			<i class="fa fa-edit"></i>
+		</div>
 		<h2 class="vue-fa-hide" :class="{'vue-fa-show': isHome}">主题</h2>
-		<a class="vue-fa-hide pull-left vue-back" :class="{'vue-fa-show': isTopic}">< 返回</a>
 		<h2 class="vue-fa-hide" :class="{'vue-fa-show': isTopic}">正文</h2>
 		<h2 class="vue-fa-hide" :class="{'vue-fa-show': isCollect}">收藏</h2>
 		<h2 class="vue-fa-hide" :class="{'vue-fa-show': isUser}">我的</h2>
@@ -44,13 +49,24 @@ module.exports = {
 			this.isCollect = false;
 			this.isUser = true;
 		}
+	},
+	isShowSidebar: {
+		type: Boolean,
+		default: false,
+		required: true,
+		twoway: true
+	},
+	methods:{
+		sidebar(){
+			this.isShowSidebar = true
+		}
 	}
 }
 </script>
 
 <style>
 .bar-easy-vue {
-	background-color: hsla(0,0%,100%,.95);
+	background-color: #fff;
 	line-height: 44px;
 	position: fixed;
 	left: 0;
@@ -67,10 +83,18 @@ module.exports = {
 }
 .bar-easy-vue .vue-fa-show{
 	display: block;
-	text-align: center;
 	font-size: 16px;
 	margin-bottom: 0;
 	line-height: 44px;
 	font-weight: 400;
+	position: absolute;
+	left: 50%;
+	margin-left: -16px;
+}
+.fa-navicon{
+	margin: 14px 0 0 10px;
+}
+.fa-edit{
+	margin: 14px 10px 0 0;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
 	<nav class="bar bar-tab easy-bottom-bar">
 		<a class="tab-item"  v-link="{path:'/list'}">
-			<span class="icon fa fa-codepen" :class="{'easy-fa-color': isOnePage}"></span>
+			<span class="icon fa-bars" :class="{'easy-fa-color': isOnePage}"></span>
 			<span class="tab-label" :class="{'easy-fa-color': isOnePage}">主题</span>
 		</a>
 		<a class="tab-item" v-link="{path:'/collect'}">
-			<span class="icon icon-star-filled" :class="{'easy-fa-color': isTwoPage}"></span>
+			<span class="icon fa-user" :class="{'easy-fa-color': isTwoPage}"></span>
 			<span class="tab-label" :class="{'easy-fa-color': isTwoPage}">收藏</span>
 		</a>
 		<a class="tab-item" v-link="{path:'/user'}">

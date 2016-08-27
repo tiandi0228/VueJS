@@ -1,150 +1,31 @@
 <template>
-	<div>
-		<bar-top></bar-top>
-		<div id="content">
-			<div class="topic-list">
-				<ul>
-					<li class="share">
-						<h3 class="tit">
-							<span class="tab">分享</span>
-							【杭州】 Node Party Github 资料库现已建立，欢迎 watch/star 并持续关注活动信息
-						</h3>
-						<div class="info">
-							<div class="right">
-								<p><strong title="回复数">14</strong> / <span title="阅读数">1314</span></p>
-								<p class="latest_reply_time">19 小时前</p>
-							</div>
-							<div class="userPanel">
-								<img alt="" src="//gravatar.com/avatar/d00d8e3461257418a62b1cb7abeea85a?size=48">
-								<div >
-									<p slot="one">xinyu198736</p>
-									<p slot="two">2 天前</p>
-								</div>
-							</div>
+	<div class="topic-list">
+		<ul>
+			<li class="share">
+				<h3 class="tit">
+					<span class="tab">分享</span>
+					【杭州】 Node Party Github 资料库现已建立，欢迎 watch/star 并持续关注活动信息
+				</h3>
+				<div class="info">
+					<div class="right">
+						<p><strong title="回复数">14</strong> / <span title="阅读数">1314</span></p>
+						<p class="latest_reply_time">19 小时前</p>
+					</div>
+					<div class="userPanel">
+						<img alt="" src="//gravatar.com/avatar/d00d8e3461257418a62b1cb7abeea85a?size=48">
+						<div >
+							<p slot="one">xinyu198736</p>
+							<p slot="two">2 天前</p>
 						</div>
-					</li>
-					<li class="share">
-						<h3 class="tit">
-							<span class="tab">分享</span>
-							【杭州】 Node Party Github 资料库现已建立，欢迎 watch/star 并持续关注活动信息
-						</h3>
-						<div class="info">
-							<div class="right">
-								<p><strong title="回复数">14</strong> / <span title="阅读数">1314</span></p>
-								<p class="latest_reply_time">19 小时前</p>
-							</div>
-							<div class="userPanel">
-								<img alt="" src="//gravatar.com/avatar/d00d8e3461257418a62b1cb7abeea85a?size=48">
-								<div >
-									<p slot="one">xinyu198736</p>
-									<p slot="two">2 天前</p>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="share">
-						<h3 class="tit">
-							<span class="tab">分享</span>
-							【杭州】 Node Party Github 资料库现已建立，欢迎 watch/star 并持续关注活动信息
-						</h3>
-						<div class="info">
-							<div class="right">
-								<p><strong title="回复数">14</strong> / <span title="阅读数">1314</span></p>
-								<p class="latest_reply_time">19 小时前</p>
-							</div>
-							<div class="userPanel">
-								<img alt="" src="//gravatar.com/avatar/d00d8e3461257418a62b1cb7abeea85a?size=48">
-								<div >
-									<p slot="one">xinyu198736</p>
-									<p slot="two">2 天前</p>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="share">
-						<h3 class="tit">
-							<span class="tab">分享</span>
-							【杭州】 Node Party Github 资料库现已建立，欢迎 watch/star 并持续关注活动信息
-						</h3>
-						<div class="info">
-							<div class="right">
-								<p><strong title="回复数">14</strong> / <span title="阅读数">1314</span></p>
-								<p class="latest_reply_time">19 小时前</p>
-							</div>
-							<div class="userPanel">
-								<img alt="" src="//gravatar.com/avatar/d00d8e3461257418a62b1cb7abeea85a?size=48">
-								<div >
-									<p slot="one">xinyu198736</p>
-									<p slot="two">2 天前</p>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="share">
-						<h3 class="tit">
-							<span class="tab">分享</span>
-							【杭州】 Node Party Github 资料库现已建立，欢迎 watch/star 并持续关注活动信息
-						</h3>
-						<div class="info">
-							<div class="right">
-								<p><strong title="回复数">14</strong> / <span title="阅读数">1314</span></p>
-								<p class="latest_reply_time">19 小时前</p>
-							</div>
-							<div class="userPanel">
-								<img alt="" src="//gravatar.com/avatar/d00d8e3461257418a62b1cb7abeea85a?size=48">
-								<div >
-									<p slot="one">xinyu198736</p>
-									<p slot="two">2 天前</p>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="share">
-						<h3 class="tit">
-							<span class="tab">分享</span>
-							【杭州】 Node Party Github 资料库现已建立，欢迎 watch/star 并持续关注活动信息
-						</h3>
-						<div class="info">
-							<div class="right">
-								<p><strong title="回复数">14</strong> / <span title="阅读数">1314</span></p>
-								<p class="latest_reply_time">19 小时前</p>
-							</div>
-							<div class="userPanel">
-								<img alt="" src="//gravatar.com/avatar/d00d8e3461257418a62b1cb7abeea85a?size=48">
-								<div >
-									<p slot="one">xinyu198736</p>
-									<p slot="two">2 天前</p>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<button type="button" class="loadMoreBtn" _v-083802e0="">加载更多</button>
-		</div>
-		<bar-bottom></bar-bottom>
-	</div> 
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<button type="button" class="loadMoreBtn">加载更多</button>
 </template>
 
-<script>
-	var BarTop  = require('../components/BarTop.vue');
-	var BarBottom  = require('../components/BarBottom.vue');
-	module.exports = {
-		components:{
-			'bar-top':BarTop,
-			'bar-bottom':BarBottom,
-		},
-		methods:{
-			
-		}
-	}
-</script>
-
 <style>
-#content {
-	padding: 28px 5px 10px;
-	overflow-y: auto;
-}
 .topic-list ul{
 	padding: 0;
 }
