@@ -20,6 +20,25 @@
 					</div>
 				</div>
 			</li>
+			<li class="share">
+				<h3 class="tit">
+					<span class="tab">分享</span>
+					【杭州】 Node Party Github 资料库现已建立，欢迎 watch/star 并持续关注活动信息
+				</h3>
+				<div class="info">
+					<div class="right">
+						<p><strong title="回复数">14</strong> / <span title="阅读数">1314</span></p>
+						<p class="latest_reply_time">19 小时前</p>
+					</div>
+					<div class="userPanel">
+						<img alt="" src="//gravatar.com/avatar/d00d8e3461257418a62b1cb7abeea85a?size=48">
+						<div >
+							<p slot="one">xinyu198736</p>
+							<p slot="two">2 天前</p>
+						</div>
+					</div>
+				</div>
+			</li>
 		</ul>
 	</div>
 	<button type="button" class="loadMoreBtn">加载更多</button>
@@ -27,7 +46,7 @@
 
 <style>
 .topic-list ul{
-	padding: 0;
+	padding: 20px 0;
 }
 .topic-list li {
 	padding: 10px 8px;

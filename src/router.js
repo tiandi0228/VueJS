@@ -44,17 +44,17 @@ default (router) => {
 				require(['./views/about.vue'], resolve);
 			}
 		},
-		"/perinfo/:loginname": {
-			name: " perinfo",
-			component: function(resolve) {
-				require(['./views/perinfo.vue'], resolve);
-			}
-		},
-		"/login": {
-			name: " login",
-			component: function(resolve) {
-				require(['./views/login.vue'], resolve);
-			}
-		}
+		// "/perinfo/:loginname": {
+		// 	name: " perinfo",
+		// 	component: function(resolve) {
+		// 		require(['./views/perinfo.vue'], resolve);
+		// 	}
+		// },
+		// "/login": {
+		// 	name: " login",
+		// 	component: function(resolve) {
+		// 		require(['./views/login.vue'], resolve);
+		// 	}
+		// }
 	});
 }

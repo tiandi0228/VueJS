@@ -14,8 +14,9 @@ html {
     -webkit-text-size-adjust:100%;
     -ms-text-size-adjust:100%
 }
-body {
-    margin:0
+body ,div{
+    margin:0;
+    padding: 0;
 }
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
     display:block
@@ -27,6 +28,11 @@ audio, canvas, progress, video {
 audio:not([controls]) {
     display:none;
     height:0
+}
+ul,li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 [hidden], template {
     display:none
@@ -155,7 +161,7 @@ td, th {
 }
 body {
     font-family:Helvetica Neue, Helvetica, sans-serif;
-    font-size:17px;
+    font-size:16px;
     line-height:21px;
     color:#000;
     background-color:#fff;

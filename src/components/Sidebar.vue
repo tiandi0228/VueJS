@@ -1,15 +1,93 @@
 <template>
-        	<div class="offcanvas">
-                        <nav class="offcanvas-bar">
-                                    <div class="user">
-                                    </div>
-                        </nav>
+  	<div class="offcanvas">
+        <nav class="offcanvas-bar">
+            <div class="navicon" @click="hide">
+                <i class="fa fa-navicon"></i>
             </div>
+            <div class="list">
+                <ul>
+                    <li class="login"><i class="fa fa-arrow-circle-right"></i>登录</li>
+                    <li><i class="fa fa-user pull-left"></i>tiandi0228</li>
+                    <li><i class="fa fa-envelope pull-left"></i>我的消息</li>
+                </ul>
+                <ul>
+                    <li class="tit">版块</li>
+                    <li v-for="item in itemForum" v-link="{path: '/'+item.view, query:{'tab': item.tab}}">
+                        <i class="fa pull-left" :class="item.icon"></i>
+                        {{item.name}}
+                    </li>
+                </ul>
+                <ul>
+                    <li class="tit">其他</li>
+                    <li v-for="item in itemInfo" v-link="{path: '/'+ item.view}">
+                        <i class="fa pull-left" :class="item.icon"></i>
+                        {{item.name}}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 </template>
 
 <script>
 export default{
-	
+    data() {
+        return {
+            tab: this.$route.query.tab,
+            itemForum: [{
+                icon: "fa-list",
+                name: "全部",
+                view: "list",
+                tab: "all"
+            },{
+                icon: "fa-star",
+                name: "精华",
+                view: "list",
+                tab: "good"
+              },{
+                icon: "fa-calendar-minus-o",
+                name:"week",
+                view: "list",
+                tab: "week"
+              },{
+                icon: "fa-share-alt-square",
+                name:"分享",
+                view: "list",
+                tab: "share"
+              },{
+                icon: "fa-question-circle",
+                name: "问答",
+                view: "list",
+                tab: "ask"
+              },{
+                icon: "fa-users",
+                name: "招聘",
+                view: "list",
+                tab: "job"
+              }],
+              itemInfo:[{
+                icon: "fa-bell",
+                name:"消息",
+                view: "message"
+              },{
+                icon: "fa-info-circle",
+                name:"关于",
+                view: "about"
+              }]
+        }
+    },
+    props:{
+        isShowSidebar:{
+            type: Boolean,
+            required: true,
+            twoWay: true
+        }
+    },
+    methods:{
+        hide(){
+            this.isShowSidebar = false
+        }
+    }
 }
 </script>
 
@@ -20,62 +98,43 @@ export default{
     bottom: 0;
     left: 0;
     right: 0;
-    /*visibility: hidden;*/
+    visibility: hidden;
     z-index: 1001;
+    color: #7f8c8d;
   }
-  .user{
+  .offcanvas .tit{
+    background-color: #f5f5f5;
+    font-size: 12px;
+    padding-left: 10px;
+  }
+  .offcanvas .navicon{
     text-align: center;
-    padding: 60px 0 25px;
+    color: #444;
+    border-bottom: 1px #ccc solid;
+    height: 44px;
   }
-  .user img, .user p{
-    cursor: pointer;
+  .offcanvas .navicon .fa-navicon {
+    margin: 0;
+    color: #444;
+    line-height: 44px;
   }
-  .user img{
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    box-shadow: 0 0 1px 5px #3d4a5d;
-  }
-  
-  .user img+p{
-    color: #fff;
-    line-height: 32px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 80%;
-    margin: 5px auto;
-  }
-  .offcanvas .logo {
+  .offcanvas .list .login{
     text-align: center;
-    padding: 14px 0;
-    position: absolute;
-    bottom: 0;
   }
-  .offcanvas .logo img {
-    width: 60%;
-  }
-  @media all and (max-width: 435px){
-    .user{
-      padding: 20px 0 0;
-    }
-    .user img+p{
-      margin: 0 auto;
-    }
-    .offcanvas .logo{
-      padding: 5px 0;
-    }
-    .offcanvas .logo img {
-      width: 45%;
-    }
+  .offcanvas .list i{
+    width: 20px;
+    text-align: center;
+    padding: 5px 10px 0 0;
   }
   .offcanvas-bar {
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 235px;
+    left: 0;
     width: 235px;
-    background-color: #24344B;
+    background-color: #fff;
+    border-right: 1px #ccc solid;
+    box-shadow: 0 0 2px #ccc;
     max-width: 100%;
     -webkit-transform: translateX(-100%);
     -ms-transform: translateX(-100%);
@@ -86,14 +145,11 @@ export default{
     transition: all .3s;
   }
   
-  .offcanvas-bar ul {
-    margin-top: 14px;
-    background-color: #2b3c58;
-  }
-  
   .offcanvas-bar ul li {
     line-height: 1.8;
-    padding: 4px 24px;
+    padding: 4px 15px;
+    border-bottom: 1px #ccc solid;
+    font-size: 14px;
   }
   .offcanvas-bar ul li a{
   	display: block;
@@ -106,11 +162,7 @@ export default{
     color: #7f8c8d;
     text-decoration: none;
   }
-  
-  
-  .v-link-active.tab.active, .v-link-active:not(.tab),.offcanvas-bar .tab.active{
-    background-color: #3B4F6A;
-  }
+
   .user .login{
     font-size: 16px;
   }
