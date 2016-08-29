@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<sidebar :is-show-sidebar.sync="isShowSidebar"></sidebar>
+		<sidebar :is-show-sidebar.sync="isShowSidebar" :is-login.sync="isLogin"></sidebar>
 		<div id="content">
 			<router-view></router-view>
 		</div>
@@ -15,7 +15,8 @@
 		data() {
 			return {
 				title: "",
-				isShowSidebar: false
+				isShowSidebar: false,
+				isLogin: localStorage.loginname ? true : false,
 			}
 		},
 		components: {
@@ -23,39 +24,40 @@
 			sidebar: sidebar,
 		},
 		created: function(){
-    		var temTitle = "";
-		    this.$route.router.afterEach((transition) => {
-		      	var router = transition.to
-		      	var routerName = router.name.trim()
-		      	if(routerName === "list"){
-			        switch (router.query.tab){
-			          	case "all": temTitle = "全部"; break;
-			          	case "good": temTitle = "精华"; break;
-			          	case "share": temTitle = "分享"; break;
-			          	case "ask": temTitle = "问答"; break;
-			          	case "job": temTitle = "招聘"; break;
-			          	default: temTitle = "全部";
-			        }
-		      	}else{
-		        	if(routerName === "message") temTitle = "消息"
-			        else if(routerName === "about") temTitle = "关于"
-			        else if(routerName === "perinfo") temTitle = "个人信息"
-			        else if(routerName === "login") temTitle = "登录"
-			        else if(routerName === "newtopic") temTitle = "发帖"
-		      	}
-		      	this.title = temTitle
-		      	this.isShowSidebar = false
-		    })
+    			var temTitle = "";
+		    	this.$route.router.afterEach((transition) => {
+		      		var router = transition.to
+		      		var routerName = router.name.trim()
+			      	if(routerName === "list"){
+					switch (router.query.tab){
+		          				case "all": temTitle = "全部"; break;
+				          		case "good": temTitle = "精华"; break;
+				          		case "week": temTitle = "week"; break;
+				          		case "share": temTitle = "分享"; break;
+				          		case "ask": temTitle = "问答"; break;
+				          		case "job": temTitle = "招聘"; break;
+				          		default: temTitle = "全部";
+				        	}
+			      	}else{
+			        		if(routerName === "message") temTitle = "消息"
+			        		else if(routerName === "about") temTitle = "关于"
+				        	else if(routerName === "perinfo") temTitle = "个人信息"
+				        	else if(routerName === "login") temTitle = "登录"
+				       	else if(routerName === "new") temTitle = "发帖"
+			      	}
+			      	this.title = temTitle
+			      	this.isShowSidebar = false
+			})
 		},
 		watch:{
 			isShowSidebar(){
 				if(this.isShowSidebar){
-	        		document.getElementById('app').className = 'offcanvas-page show-offcanvas'
-	        		console.log('显示左侧')
-	        	}else{
-	        		document.getElementById('app').className = ''
-        			console.log('隐藏左侧')
-	        	}
+	        				document.getElementById('app').className = 'offcanvas-page show-offcanvas'
+	        				console.log('显示左侧')
+	        			}else{
+	        				document.getElementById('app').className = ''
+        					console.log('隐藏左侧')
+	        			}
 			}
 		}
 	}

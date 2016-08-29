@@ -3,7 +3,7 @@
 		<div class="pull-left" @click="sidebar">
 			<i class="fa fa-navicon"></i>
 		</div>
-		<div class="pull-right">
+		<div class="pull-right" v-link="{path: '/new'}">
 			<i class="fa fa-edit"></i>
 		</div>
 		<h2>{{title}}</h2>
@@ -18,18 +18,12 @@ module.exports = {
 			default: "Vue.js",
 			required: true
 		},
-      	isShowSidebar: {
-        	type: Boolean,
-        	default: false,
-        	required: true,
-        	twoway: true
-      	}
-	},
-	isShowSidebar: {
-		type: Boolean,
-		default: false,
-		required: true,
-		twoway: true
+      		isShowSidebar: {
+        			type: Boolean,
+        			default: false,
+        			required: true,
+        			twoway: true
+      		}
 	},
 	methods:{
 		sidebar(){

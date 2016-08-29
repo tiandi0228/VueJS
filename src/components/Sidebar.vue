@@ -5,25 +5,29 @@
                 <i class="fa fa-navicon"></i>
             </div>
             <div class="list">
-                <ul>
-                    <li class="login"><i class="fa fa-arrow-circle-right"></i>登录</li>
-                    <li><i class="fa fa-user pull-left"></i>tiandi0228</li>
-                    <li><i class="fa fa-envelope pull-left"></i>我的消息</li>
-                </ul>
-                <ul>
-                    <li class="tit">版块</li>
-                    <li v-for="item in itemForum" v-link="{path: '/'+item.view, query:{'tab': item.tab}}">
-                        <i class="fa pull-left" :class="item.icon"></i>
-                        {{item.name}}
-                    </li>
-                </ul>
-                <ul>
-                    <li class="tit">其他</li>
-                    <li v-for="item in itemInfo" v-link="{path: '/'+ item.view}">
-                        <i class="fa pull-left" :class="item.icon"></i>
-                        {{item.name}}
-                    </li>
-                </ul>
+                  <!-- 已登录 -->
+                  <ul v-if="isLogin">
+                        <li><i class="fa fa-user pull-left"></i>tiandi0228</li>
+                        <li><i class="fa fa-envelope pull-left"></i>我的消息</li>
+                  </ul>
+                  <!-- 未登录 -->
+                  <ul v-else>
+                        <li class="login"><i class="fa fa-arrow-circle-right"></i>登录</li>
+                  </ul>
+                  <ul>
+                        <li class="tit">版块</li>
+                        <li v-for="item in itemForum" v-link="{path: '/'+item.view, query:{'tab': item.tab}}">
+                              <i class="fa pull-left" :class="item.icon"></i>
+                             {{item.name}}
+                        </li>
+                  </ul>
+                  <ul>
+                        <li class="tit">其他</li>
+                        <li v-for="item in itemInfo" v-link="{path: '/'+ item.view}">
+                              <i class="fa pull-left" :class="item.icon"></i>
+                             {{item.name}}
+                        </li>
+                  </ul>
             </div>
         </nav>
     </div>
@@ -78,6 +82,11 @@ export default{
     },
     props:{
         isShowSidebar:{
+            type: Boolean,
+            required: true,
+            twoWay: true
+        },
+        isLogin: {
             type: Boolean,
             required: true,
             twoWay: true
