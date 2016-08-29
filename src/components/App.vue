@@ -76,6 +76,9 @@
 	background-color: rgba(0, 0, 0, .3);
 }
 #app.show-offcanvas .offcanvas-bar {
+	left: 235px;
+}
+/*#app.show-offcanvas .offcanvas-bar {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
@@ -86,5 +89,5 @@
     -ms-transform: translateX(235px);
     -o-transform: translateX(235px);
     transform: translateX(235px);
-}
+}*/
 </style>

@@ -12,7 +12,7 @@
                   </ul>
                   <!-- 未登录 -->
                   <ul v-else>
-                        <li class="login"><i class="fa fa-arrow-circle-right"></i>登录</li>
+                        <li class="login" v-link="{path:'/login'}"><i class="fa fa-arrow-circle-right"></i>登录</li>
                   </ul>
                   <ul>
                         <li class="tit">版块</li>

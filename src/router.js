@@ -38,10 +38,10 @@ default (router) => {
 				require(['./views/about.vue'], resolve);
 			}
 		},
-		"/perinfo/:loginname": { // 个人信息
-			name: " perinfo",
+		"/user/:loginname": { // 个人信息
+			name: " user",
 			component: function(resolve) {
-				require(['./views/perinfo.vue'], resolve);
+				require(['./views/user.vue'], resolve);
 			}
 		},
 		"/login": { // 登录
