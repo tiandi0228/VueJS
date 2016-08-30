@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<sidebar :is-show-sidebar.sync="isShowSidebar" :is-login.sync="isLogin" :title.sync="title" :avatar_url.sync="avatar_url" :loginname.sync="loginname"></sidebar>
+		<sidebar :is-show-sidebar.sync="isShowSidebar" :is-login.sync="isLogin" :title.sync="title" :unread-count.sync="unreadCount"></sidebar>
 		<div id="content">
-			<router-view :is-show-sidebar.sync="isShowSidebar" :is-login.sync="isLogin" :avatar_url.sync="avatar_url" :loginname.sync="loginname" :accesstoken.sync="accesstoken"></router-view>
+			<router-view></router-view>
 		</div>
 		<bartop :title="title" :is-show-sidebar.sync="isShowSidebar"></bartop>
 	</div>
@@ -23,34 +23,38 @@ export default {
 			isLogin: localStorage.loginname ? true : false,
 			loginname: localStorage.loginname,
 			avatar_url: localStorage.avatar_url,
-			accesstoken: localStorage.accesstoken
+			accesstoken: localStorage.accesstoken,
+			unreadCount: 0
 		}
 	},
 	created() {
-			var temTitle = ""
-	    	this.$route.router.afterEach((transition) => {
-	      		var router = transition.to
-	      		var routerName = router.name.trim()
-		      	if(routerName === "list"){
+		var temTitle = ""
+    	this.$route.router.afterEach((transition) => {
+      		var router = transition.to
+      		var routerName = router.name.trim()
+	      	if(routerName === "list"){
 				switch (router.query.tab){
-	          				case "all": temTitle = "全部"; break
-			          		case "good": temTitle = "精华"; break
-			          		case "week": temTitle = "week"; break
-			          		case "share": temTitle = "分享"; break
-			          		case "ask": temTitle = "问答"; break
-			          		case "job": temTitle = "招聘"; break
-			          		default: temTitle = "全部"
-			        	}
-		      	}else{
-		        		if(routerName === "message") temTitle = "消息"
-		        		else if(routerName === "about") temTitle = "关于"
-			        	else if(routerName === "perinfo") temTitle = "个人信息"
-			        	else if(routerName === "login") temTitle = "登录"
-			       	else if(routerName === "new") temTitle = "发帖"
-		      	}
-		      	this.title = temTitle
-		      	this.isShowSidebar = false
-		})
+      				case "all": temTitle = "全部"; break
+	          		case "good": temTitle = "精华"; break
+	          		case "week": temTitle = "week"; break
+	          		case "share": temTitle = "分享"; break
+	          		case "ask": temTitle = "问答"; break
+	          		case "job": temTitle = "招聘"; break
+	          		default: temTitle = "全部"
+	        	}
+	      	}else{
+	        		if(routerName === "message") temTitle = "消息"
+	        		else if(routerName === "about") temTitle = "关于"
+		        	else if(routerName === "user") temTitle = "用户"
+		        	else if(routerName === "login") temTitle = "登录"
+		       	else if(routerName === "new") temTitle = "发帖"
+	      	}
+	      	this.title = temTitle
+	      	this.isShowSidebar = false
+		}),
+		this.$http.get('http://www.vue-js.com/api/v1/message/count?accesstoken='+this.accesstoken).then(function(res) {
+        	this.unreadCount = res.data
+        })
 	},
 	watch: {
 		isShowSidebar(){

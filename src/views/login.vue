@@ -22,21 +22,6 @@ export default {
 			type: Boolean,
 			required: true,
 			twoWay: true
-		},
-		loginname: {
-			type: String,
-			required: true,
-			twoWay: true
-		},
-		avatar_url: {
-			type: String,
-			required: true,
-			twoWay: true
-		},
-		accesstoken: {
-			type: String,
-			required: true,
-			twoWay: true
 		}
 	},
 	created(){
@@ -46,19 +31,19 @@ export default {
 		signIn() {
 			this.token = this.accessTokenInput.trim()
 			if(this.token.length > 0) {
-		           	 	this.$http.post('http://www.vue-js.com/api/v1/accesstoken/', {accesstoken: this.token}).then((res) => {
-		           	 		if(res.data.success) {
-		           	 			localStorage.loginname = res.data.loginname
+           	 	this.$http.post('http://www.vue-js.com/api/v1/accesstoken/', {accesstoken: this.token}).then((res) => {
+           	 		if(res.data.success) {
+           	 			localStorage.loginname = res.data.loginname
 						localStorage.avatar_url = res.data.avatar_url
 						localStorage.userId = res.data.id
 						localStorage.accesstoken = this.token
 						this.isLogin = true
 						var redirect = decodeURIComponent(this.$route.query.redirect || '/')
 						this.$route.router.go(redirect)
-		           	 		}
+           	 		}
 				})
-		           	}
-           		}
+           	}
+   		}
 	}
 }
 </script>

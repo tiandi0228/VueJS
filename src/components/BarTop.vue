@@ -18,12 +18,12 @@ export default {
 			default: "Vue.js",
 			required: true
 		},
-      		isShowSidebar: {
-        			type: Boolean,
-        			default: false,
-        			required: true,
-        			twoway: true
-      		}
+  		isShowSidebar: {
+			type: Boolean,
+			default: false,
+			required: true,
+			twoway: true
+  		}
 	},
 	methods:{
 		sidebar(){

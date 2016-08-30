@@ -8,8 +8,8 @@
                   <!-- 已登录 -->
                   <ul v-if="isLogin" @click="goEnter" class="user">
                         <li>
-                           <img :src="avatar_url">
-                           <p v-text="loginname"></p>
+                            <img :src="avatar_url">
+                            <p v-text="loginname"></p>
                         </li>
                   </ul>
                   <!-- 未登录 -->
@@ -28,6 +28,7 @@
                         <li v-for="item in itemInfo" v-link="{path: '/'+ item.view}">
                               <i class="fa pull-left" :class="item.icon"></i>
                              {{item.name}}
+                             <span class="unreadTip" v-if="item.view==='message' && unreadCount !== 0">( {{unreadCount}} )</span>
                         </li>
                   </ul>
                   <div v-if="isLogin" @click="logout" class="logout"><i class="fa fa-sign-out"></i>退出</div>
@@ -40,6 +41,9 @@
 export default{
     data() {
         return {
+            loginname: localStorage.loginname,
+            avatar_url: localStorage.avatar_url,
+            accesstoken: localStorage.accesstoken,
             tab: this.$route.query.tab,
             itemForum: [{
                 icon: "fa-list",
@@ -94,15 +98,11 @@ export default{
         required: true,
         twoWay: true
       },
-      avatar_url: {
-        type: String,
+      unreadCount: {
+        type: Number,
         required: true,
-        twoWay: true
-      },
-      loginname: {
-        type: String,
-        required: true,
-        twoWay: true
+        twoWay: true,
+        default: 0
       }
     },
     methods:{
@@ -110,12 +110,12 @@ export default{
             this.isShowSidebar = false
         },
         login(){
-            var link = '/login?redirect='+ encodeURIComponent(this.$route.path);
-            this.$route.router.go(link);
+            var link = '/login?redirect='+ encodeURIComponent(this.$route.path)
+            this.$route.router.go(link)
         },
         goEnter(){
-          //this.$route.router.go({name:'user',params:{loginname:localStorage.loginname}});
-          console.log(this.avatar_url)
+          var link = '/user/' + this.loginname
+          this.$route.router.go(link)
         },
         logout(){
             localStorage.loginname = localStorage.avatar_url = localStorage.user_id = localStorage.accesstoken = ""
@@ -212,7 +212,8 @@ export default{
   .user li img{
     float: none;
     width: 48px;
-    padding: 10px 0 0 0;
+    height: 48px;
+    margin-top: 10px;
     border-radius: 10px;
     border: 1px #ccc solid;
   }

@@ -96,7 +96,7 @@
 .right strong {
 	color: #42b983;
 }
-img{
+.info img{
 	float: left;
 	width: 44px;
 	height: 44px;
