@@ -6,13 +6,15 @@
             </div>
             <div class="list">
                   <!-- 已登录 -->
-                  <ul v-if="isLogin">
-                        <li><i class="fa fa-user pull-left"></i>tiandi0228</li>
-                        <li><i class="fa fa-envelope pull-left"></i>我的消息</li>
+                  <ul v-if="isLogin" @click="goEnter" class="user">
+                        <li>
+                           <img :src="avatar_url">
+                           <p v-text="loginname"></p>
+                        </li>
                   </ul>
                   <!-- 未登录 -->
                   <ul v-else>
-                        <li class="login" v-link="{path:'/login'}"><i class="fa fa-arrow-circle-right"></i>登录</li>
+                        <li class="login" @click="login"><i class="fa fa-arrow-circle-right"></i>登录</li>
                   </ul>
                   <ul>
                         <li class="tit">版块</li>
@@ -28,6 +30,7 @@
                              {{item.name}}
                         </li>
                   </ul>
+                  <div v-if="isLogin" @click="logout" class="logout"><i class="fa fa-sign-out"></i>退出</div>
             </div>
         </nav>
     </div>
@@ -77,31 +80,54 @@ export default{
                 icon: "fa-info-circle",
                 name:"关于",
                 view: "about"
-              }]
+              }],
         }
     },
     props:{
-        isShowSidebar:{
-            type: Boolean,
-            required: true,
-            twoWay: true
-        },
-        isLogin: {
-            type: Boolean,
-            required: true,
-            twoWay: true
-        }
+      isShowSidebar:{
+        type: Boolean,
+        required: true,
+        twoWay: true
+      },
+      isLogin: {
+        type: Boolean,
+        required: true,
+        twoWay: true
+      },
+      avatar_url: {
+        type: String,
+        required: true,
+        twoWay: true
+      },
+      loginname: {
+        type: String,
+        required: true,
+        twoWay: true
+      }
     },
     methods:{
         hide(){
             this.isShowSidebar = false
+        },
+        login(){
+            var link = '/login?redirect='+ encodeURIComponent(this.$route.path);
+            this.$route.router.go(link);
+        },
+        goEnter(){
+          //this.$route.router.go({name:'user',params:{loginname:localStorage.loginname}});
+          console.log(this.avatar_url)
+        },
+        logout(){
+            localStorage.loginname = localStorage.avatar_url = localStorage.user_id = localStorage.accesstoken = ""
+            this.isLogin = false
+            this.$route.router.go({path: "/list"})
         }
     }
 }
 </script>
 
 <style scoped>
-	.offcanvas {
+.offcanvas {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -129,6 +155,14 @@ export default{
   }
   .offcanvas .list .login{
     text-align: center;
+  }
+  .offcanvas .list .logout{
+    margin: 10px;
+    text-align: center;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 5px 0;
+    border-radius: 5px;
   }
   .offcanvas .list i{
     width: 20px;
@@ -171,9 +205,19 @@ export default{
     color: #7f8c8d;
     text-decoration: none;
   }
-
-  .user .login{
-    font-size: 16px;
+  .user li{
+    text-align: center;
+    padding: 10px 0;
+  }
+  .user li img{
+    float: none;
+    width: 48px;
+    padding: 10px 0 0 0;
+    border-radius: 10px;
+    border: 1px #ccc solid;
+  }
+  .user li p{
+    margin: 0;
   }
   .message .unreadTip{
   }

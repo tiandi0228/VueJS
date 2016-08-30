@@ -14,7 +14,7 @@ html {
     -webkit-text-size-adjust:100%;
     -ms-text-size-adjust:100%
 }
-body ,div{
+body ,div ,input ,button{
     margin:0;
     padding: 0;
 }
@@ -98,7 +98,8 @@ code, kbd, pre, samp {
 button, input, optgroup, select, textarea {
     margin:0;
     font:inherit;
-    color:inherit
+    color:inherit;
+    outline: medium;
 }
 button {
     overflow:visible

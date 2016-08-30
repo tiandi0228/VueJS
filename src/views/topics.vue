@@ -1,5 +1,5 @@
 <template>
-	<div class="topic-list">
+	<div class="topic-list" :is-show-sidebar.sync="false">
 		<ul>
 			<li class="share">
 				<h3 class="tit">
