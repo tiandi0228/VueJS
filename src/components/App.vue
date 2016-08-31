@@ -32,8 +32,8 @@ export default {
       			var router = transition.to
       			var routerName = router.name.trim()
 	      		if(routerName === "list"){
-				switch (router.query.tab){
-      				case "all": temTitle = "全部"; break
+					switch (router.query.tab){
+      					case "all": temTitle = "全部"; break
 		          		case "good": temTitle = "精华"; break
 		          		case "week": temTitle = "week"; break
 		          		case "share": temTitle = "分享"; break
@@ -42,11 +42,11 @@ export default {
 		          		default: temTitle = "全部"
 		        	}
 		      	}else{
-		        		if(routerName === "message") temTitle = "消息"
-		        		else if(routerName === "about") temTitle = "关于"
-			        	else if(routerName === "user") temTitle = "用户"
-			        	else if(routerName === "login") temTitle = "登录"
-			       	else if(routerName === "new") temTitle = "发帖"
+	        		if(routerName === "message") temTitle = "消息"
+	        		else if(routerName === "about") temTitle = "关于"
+		        	else if(routerName === "user") temTitle = "用户"
+		        	else if(routerName === "login") temTitle = "登录"
+		       		else if(routerName === "new") temTitle = "发帖"
 		      	}
 		      	this.title = temTitle
 		      	this.isShowSidebar = false

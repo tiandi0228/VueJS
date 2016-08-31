@@ -13,8 +13,8 @@
 					<div class="userPanel" v-link="{path: '/user/' + topic.author.loginname}">
 						<img :src="topic.author.avatar_url">
 						<div >
-							<p slot="one">{{topic.author.loginname}}</p>
-							<p slot="two">{{topic.create_at | getLastTimeStr true}}</p>
+							<p class="one">{{topic.author.loginname}}</p>
+							<p class="two">{{topic.create_at | getLastTimeStr true}}</p>
 						</div>
 					</div>
 				</div>
