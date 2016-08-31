@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<sidebar :is-show-sidebar.sync="isShowSidebar" :is-login.sync="isLogin" :title.sync="title" :unread-count.sync="unreadCount"></sidebar>
+		<sidebar :is-show-sidebar.sync="isShowSidebar" :is-login.sync="isLogin" :title.sync="title"></sidebar>
 		<div id="content">
 			<router-view></router-view>
 		</div>
@@ -23,38 +23,34 @@ export default {
 			isLogin: localStorage.loginname ? true : false,
 			loginname: localStorage.loginname,
 			avatar_url: localStorage.avatar_url,
-			accesstoken: localStorage.accesstoken,
-			unreadCount: 0
+			accesstoken: localStorage.accesstoken
 		}
 	},
 	created() {
 		var temTitle = ""
-    	this.$route.router.afterEach((transition) => {
-      		var router = transition.to
-      		var routerName = router.name.trim()
-	      	if(routerName === "list"){
+    		this.$route.router.afterEach((transition) => {
+      			var router = transition.to
+      			var routerName = router.name.trim()
+	      		if(routerName === "list"){
 				switch (router.query.tab){
       				case "all": temTitle = "全部"; break
-	          		case "good": temTitle = "精华"; break
-	          		case "week": temTitle = "week"; break
-	          		case "share": temTitle = "分享"; break
-	          		case "ask": temTitle = "问答"; break
-	          		case "job": temTitle = "招聘"; break
-	          		default: temTitle = "全部"
-	        	}
-	      	}else{
-	        		if(routerName === "message") temTitle = "消息"
-	        		else if(routerName === "about") temTitle = "关于"
-		        	else if(routerName === "user") temTitle = "用户"
-		        	else if(routerName === "login") temTitle = "登录"
-		       	else if(routerName === "new") temTitle = "发帖"
-	      	}
-	      	this.title = temTitle
-	      	this.isShowSidebar = false
-		}),
-		this.$http.get('http://www.vue-js.com/api/v1/message/count?accesstoken='+this.accesstoken).then(function(res) {
-        	this.unreadCount = res.data
-        })
+		          		case "good": temTitle = "精华"; break
+		          		case "week": temTitle = "week"; break
+		          		case "share": temTitle = "分享"; break
+		          		case "ask": temTitle = "问答"; break
+		          		case "job": temTitle = "招聘"; break
+		          		default: temTitle = "全部"
+		        	}
+		      	}else{
+		        		if(routerName === "message") temTitle = "消息"
+		        		else if(routerName === "about") temTitle = "关于"
+			        	else if(routerName === "user") temTitle = "用户"
+			        	else if(routerName === "login") temTitle = "登录"
+			       	else if(routerName === "new") temTitle = "发帖"
+		      	}
+		      	this.title = temTitle
+		      	this.isShowSidebar = false
+		})
 	},
 	watch: {
 		isShowSidebar(){
@@ -85,16 +81,4 @@ export default {
 #app.show-offcanvas .offcanvas-bar {
 	left: 235px;
 }
-/*#app.show-offcanvas .offcanvas-bar {
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    -o-transform: translateX(0);
-    transform: translateX(0);
-}
-#app.show-offcanvas #content {
-    -webkit-transform: translateX(235px);
-    -ms-transform: translateX(235px);
-    -o-transform: translateX(235px);
-    transform: translateX(235px);
-}*/
 </style>

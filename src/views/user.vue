@@ -1,74 +1,68 @@
 <template>
-	<div>
-		<div class="user-info">
-			<img :src="user.avatar_url">
-			<p>{{user.loginname}}</p>
-			<p>注册时间：{{user.create_at | getLastTimeStr true}}</p>
-			<p>积分：{{user.score}}</p>
-		</div>
+	<div class="user-info">
+		<img :src="user.avatar_url">
+		<p>{{user.loginname}}</p>
+		<p>注册时间：{{user.create_at | getLastTimeStr true}}</p>
+		<p>积分：{{user.score}}</p>
 	</div>
 
-	<section class="tab">
-        <ul class="tab-nav">
-            <li class="item" :class='{"selected":selectItem === 1}' @click="changeItem(1)">最近回复</li>
-            <li class="item" :class='{"selected":selectItem === 2}' @click="changeItem(2)">最新发布</li>
-        </ul>
-        <div class="tab-content" v-for="item in currentData">
-            <section class="user">
-                <img class="head" :src="item.author.avatar_url"
-                    v-link="{name:'user',params:{loginname:item.author.loginname}}" />
-                <div class="info" v-link="{name:'topic',params:{id:item.id}}">
-                    <div class="t-title">{{item.title}}</div>
-                    <span class="cl">
-                        <span class="name">{{item.author.loginname}}</span>
-                    </span>
-                    <span class="cr">
-                        <span class="name">{{item.last_reply_at | getLastTimeStr true}}</span>
-                    </span>
-                </div>
-            </section>
-        </div>
-        <div class="no-data" v-show="currentData.length === 0">
-            暂无数据!
-        </div>
-    </section>
+	<div class="tab">
+	        	<ul class="tab-nav">
+			<li class="item" :class='{"selected":selectItem === 1}' @click="changeItem(1)">最近回复</li>
+			<li class="item" :class='{"selected":selectItem === 2}' @click="changeItem(2)">最新发布</li>
+	        	</ul>
+		<div class="tab-content" v-for="item in currentData">
+			<div class="user">
+				<div class="t-title" v-link="{path: '/topic/' + item.id}">{{item.title}}</div>
+				<div class="info" v-link="{path: '/user/' + item.author.loginname}">
+					<img class="avatar pull-left" :src="item.author.avatar_url" />
+					<div class="pull-left">
+						<p class="name">{{item.author.loginname}}</p>
+						<p class="time">{{item.last_reply_at | getLastTimeStr true}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="no-data" v-show="currentData.length === 0">
+			暂无数据!
+		</div>
+    	</div>
 </template>
 
 <script>
 export default {
-    data () {
-      	return {
-        	user:{},
-            currentData:[],
-            selectItem:1
-      	}
-    },
-    route:{
-    	data (transition){
-	    	let _self = this
-	        let loginname = transition.to.params.loginname
-	        this.$http.get('http://www.vue-js.com/api/v1/user/'+loginname).then(function(res) {
-	        	if(res && res.data){
-                    let data = res.data.data;
-                    _self.user = data;
-                    if(data.recent_replies.length > 0){
-                        _self.currentData = data.recent_replies;
-                    }
-                    else{
-                        _self.currentData = data.recent_topics;
-                        _self.selectItem = 2;
-                    }
-                }
-	        })
-	    }
-    },
-    methods:{
-        //切换tab
-        changeItem (idx){
-            this.selectItem = idx;
-            this.currentData = idx ===1 ? this.user.recent_replies:this.user.recent_topics;
-        }
-    },
+	data () {
+	  	return {
+	    		user:{},
+	        		currentData:[ ],
+	        		selectItem:1
+	  	}
+	},
+	route:{
+	            data (transition){
+	               	let _self = this
+		        	let loginname = this.$route.params.loginname || this.loginname
+		        	this.$http.get('http://www.vue-js.com/api/v1/user/'+loginname).then(function(res) {
+		        		if(res && res.data){
+		                    		let data = res.data.data;
+		                    		_self.user = data;
+					if(data.recent_replies.length > 0) {
+						_self.currentData = data.recent_replies
+					}else{
+		                        		_self.currentData = data.recent_topics
+		                        		_self.selectItem = 2
+		                    		}
+		                	}
+		        	})
+	            }
+	},
+	methods:{
+	    	//切换tab
+	   	 changeItem (idx){
+		        	this.selectItem = idx
+		        	this.currentData = idx ===1 ? this.user.recent_replies:this.user.recent_topics
+	    	}
+	},
 }
 </script>
 
@@ -120,66 +114,28 @@ export default {
 	padding-bottom: 1px;
 }
 .tab-content{
-	position: relative;
-	clear:both;
-}
-.tabpanel{
-	width: 100%;
-	padding: 10px;
-	display: none;
-}
-.tabpanel.active{
-	display: block;
-}
-.tabpanel li{
-	position: relative;
-	padding: 5px;
-	border-bottom: solid 1px #d4d4d4
-}
-.tabpanel .header div>p{
-	margin-bottom: 0;
+	padding: 10px 0;
 	overflow: hidden;
-	line-height: 22px;
+	border-bottom: 1px #ccc solid;
 }
-.header{
-	overflow: hidden;
+.tab-content .t-title{
+	font-size: 14px;
+	padding-bottom: 10px;
 }
-.header .date{
-	position: absolute;
-	right: 5px;
-	top: 5px;
+.tab-content .avatar{
+	width: 48px;
+	height: 48px;
+	margin-right: 10px;
 }
-.left{
-	float: left;
-	overflow: hidden;
+.tab-content p{
+	margin: 0;
 }
-.left img{
-	width: 44px;
-	height: 44px;
-	vertical-align: bottom;
-}
-.post-list .info{
+.tab-content .name{
 	font-size: 14px;
 }
-.left>div{
-	float: right;
-	margin-left: 6px;
-}
-.info p{
-	color: #34495e;
-	line-height: 1.6;
-}
-.right strong{
-	color: #42b983
-}
-.right p{
-	margin-bottom: 0;
-}
-.related-topic{
-	background-color: #f0f0f0;
-	padding: 5px;
-	margin:10px 5px;
-	border-radius: 5px;
+.tab-content .time{
+	font-size: 14px;
+	padding: 5px 0 0 0;
 }
 .no-data{
 	text-align: center;

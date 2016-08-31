@@ -44,6 +44,7 @@ export default{
             loginname: localStorage.loginname,
             avatar_url: localStorage.avatar_url,
             accesstoken: localStorage.accesstoken,
+            unreadCount: 0,
             tab: this.$route.query.tab,
             itemForum: [{
                 icon: "fa-list",
@@ -57,9 +58,9 @@ export default{
                 tab: "good"
               },{
                 icon: "fa-calendar-minus-o",
-                name:"week",
+                name:"weex",
                 view: "list",
-                tab: "week"
+                tab: "weex"
               },{
                 icon: "fa-share-alt-square",
                 name:"分享",
@@ -97,12 +98,11 @@ export default{
         type: Boolean,
         required: true,
         twoWay: true
-      },
-      unreadCount: {
-        type: Number,
-        required: true,
-        twoWay: true,
-        default: 0
+      }
+    },
+    created() {
+      if(this.accesstoken){
+        this.getUnreadCount()
       }
     },
     methods:{
@@ -121,6 +121,11 @@ export default{
             localStorage.loginname = localStorage.avatar_url = localStorage.user_id = localStorage.accesstoken = ""
             this.isLogin = false
             this.$route.router.go({path: "/list"})
+        },
+        getUnreadCount() {
+            this.$http.get('http://www.vue-js.com/api/v1/message/count?accesstoken='+this.accesstoken).then(function(res) {
+            this.unreadCount = res.data.data
+          })
         }
     }
 }
@@ -220,7 +225,8 @@ export default{
   .user li p{
     margin: 0;
   }
-  .message .unreadTip{
+  .unreadTip{
+      color: #ff0000;
   }
   li.unread .iconfont{
     color: #b1b15c;
