@@ -40,17 +40,16 @@ export default {
 	},
 	route:{
 	            data (transition){
-	               	let _self = this
 		        	let loginname = this.$route.params.loginname || this.loginname
 		        	this.$http.get('http://www.vue-js.com/api/v1/user/'+loginname).then(function(res) {
 		        		if(res && res.data){
 		                    		let data = res.data.data;
-		                    		_self.user = data;
+		                    		this.user = data;
 					if(data.recent_replies.length > 0) {
-						_self.currentData = data.recent_replies
+						this.currentData = data.recent_replies
 					}else{
-		                        		_self.currentData = data.recent_topics
-		                        		_self.selectItem = 2
+		                        		this.currentData = data.recent_topics
+		                        		this.selectItem = 2
 		                    		}
 		                	}
 		        	})

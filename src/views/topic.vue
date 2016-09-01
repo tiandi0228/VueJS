@@ -1,67 +1,73 @@
 <template>
 	<div class="topic-header">
-		<h3>JSConf 中国2016（NingJS）来啦！</h3>
+		<h3>{{topic.title}}</h3>
 		<div class="pull-right">
-			<p class="tab top">分享</p>
-			<p>810次浏览</p>
+			<p class="tab top">{{tabName(topic)}}</p>
+			<p>{{topic.visit_count}}次浏览</p>
+
 		</div>
 		<div class="userPanel">
-			<img src="//gravatar.com/avatar/dbefd0e4d332a8d252c0251075262e8d?s=48">
+			<img :src="topic.author.avatar_url">
 			<div>
-				<p class="one">xeodou</p>
-				<p class="two">发布时间：2 天前</p>
+				<p class="one">{{topic.author.loginname}}</p>
+				<p class="two">发布时间：{{topic.create_at | getLastTimeStr true}}</p>
 			</div>
 		</div>
 	</div>
 	<div class="topic-content">
 		<div class="markdown-text">
-			
+			{{{topic.content}}}
 		</div>
 	</div>
-	<replylist></replylist>
+	<replylist :replies="topic.replies" :topic-id="topic.id"></replylist>
   	<form @submit.prevent="replyHandler" class="reply-form">
-    	<textarea v-model="replyContent"></textarea>
-    	<button type="submit">回复</button>
+    		<textarea v-model="replyContent"></textarea>
+    		<button type="submit">回复</button>
   	</form>
 </template>
 
 <script>
-	import ReplyList from "../components/ReplyList.vue"
-	export default {
-		components: {
-	      	replylist: ReplyList
-	    },
-	    data() {
-	    	return {
-	    		topic: {}
-	    	}
-	    },
-	    route: {
-			data(transition){
-				var topicId = transition.to.params.id
-				this.getTopic(topicId)
+import ReplyList from "../components/ReplyList.vue"
+export default {
+	components: {
+      		replylist: ReplyList
+    	},
+	data() {
+		return {
+			topic: {},
+			replyContent: ""
+		}
+	},
+	route: {
+		data(transition){
+			var topicId = transition.to.params.id
+			this.getTopic(topicId)
+		}
+	},
+	methods:{
+		// 分类名称
+		tabName(topic) {
+			let name = ""
+			switch(topic.tab) {
+				case "weex" : name="weex"; break;
+				case "ask" : name ="问答"; break;
+				case "share": name = "分享"; break;
+				case "job": name = "招聘"; break;
 			}
-	    },
-	    methods:{
-	    	getTopic(id) {
-
-	    	}
-	    }
+			return name
+		},
+		getTopic(id) {
+			this.$http.get('http://www.vue-js.com/api/v1/topic/'+id).then(function(res) {
+		        		if(res && res.data){
+		                    		this.topic = res.data.data
+		                	}
+		        	})
+		}
 	}
+}
 </script>
 
 <style>
-.tab{
-	border-radius: 4px;
-	padding: 2px 6px;
-	color: #fff;
-	font-size: 14px;
-	margin-right: 6px;
-	text-align: center;
-}
-.top.tab {
-	background-color: #E74C3C
-}
 .topic-header{
 	overflow: hidden;
 	margin-top: 30px;
@@ -73,6 +79,17 @@
 	line-height: 1.5;
 	font-size: 16px;
 	font-weight: normal;
+}
+.topic-header .tab{
+	border-radius: 4px;
+	padding: 2px 6px;
+	color: #fff;
+	font-size: 14px;
+	margin-right: 6px;
+	text-align: center;
+}
+.topic-header .top.tab {
+	background-color: #E74C3C
 }
 .topic-header .userPanel{
 	padding: 0 0 10px 0;
@@ -90,8 +107,8 @@
 	margin-bottom: 0;
 }
 .topic-content{
-	padding: 20px 10px 10px;
-	margin: 0 10px;
+	padding: 20px 5px;
+	margin: 0;
 }
 .topic-content a{
 	color: #4078c0;
@@ -116,22 +133,22 @@
 .reply-form textarea{
 	min-height: 80px;
 	border: 1px solid #e5e5e5;
-    padding: 4px 6px;
-    border-radius: 4px;
-    color: #666;
-    margin-bottom: 0;
+	padding: 4px 6px;
+	border-radius: 4px;
+	color: #666;
+	margin-bottom: 0;
 }
 .reply-form button {
-    background-color: #80bd01;
-    border: 0;
-    color: #fff;
-    max-width: 160px;
-    width: 100%;
-    padding: 0 16px;
-    line-height: 32px;
-    border-radius: 5px;
+	background-color: #80bd01;
+	border: 0;
+	color: #fff;
+	width: 100%;
+	padding: 0 16px;
+	line-height: 40px;
+	border-radius: 5px;
 }
 .markdown-text p{
+	font-size: 100%;
 	margin-bottom: 5px;
 	white-space: pre-wrap;
 	word-wrap: break-word;
@@ -141,32 +158,18 @@
 	vertical-align: middle;
 }
 .markdown-text .prettyprint{
-	font-size: 14px;
-	padding: 15px;
-	background-color: #f7f7f8
+	background-color: #2d2d2d;
+	color: #ccc;
+	overflow: hidden;
+	padding: 0.6em;
+	white-space: pre-wrap;
+	word-break: break-word;
+	word-wrap: break-word;
 }
-pre{
-	background:#fee9cc;
-	border:1px dashed #ccc;
-	line-height:22px;
-}
-code{
-	padding:0;border:none;
-}
-p code{
-	background:0 0;
-	color:#7f7f7f;
-	margin:0 1px;
-	padding:1px 4px;
-	border-radius:1px;
-}
-div pre.prettyprint{
-	font-size:14px;
-	border-radius:0;
-	padding:0 15px;
-	border:none;
-	margin:20px -10px;
-	border-width:1px 0;
-	background:#f7f7f7;
+.markdown-text .prettyprint code{
+	font-size: 100%;
+	padding: 15px 0;
+	line-height: 1.6;
+	font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 </style>

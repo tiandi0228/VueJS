@@ -118,7 +118,7 @@ export default{
           this.$route.router.go(link)
         },
         logout(){
-            localStorage.loginname = localStorage.avatar_url = localStorage.user_id = localStorage.accesstoken = ""
+            localStorage.loginname = localStorage.avatar_url = localStorage.userId = localStorage.accesstoken = ""
             this.isLogin = false
             this.$route.router.go({path: "/list"})
         },
