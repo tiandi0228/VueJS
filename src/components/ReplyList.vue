@@ -8,7 +8,7 @@
 	  			<div class="user">
 	          				<div class="pull-right">
 	          					<div class="like-btn" @click="toggleUps($index)">
-	          						<i class="fa fa-heart-o pull-left"></i>
+	          						<i class="fa pull-left" :class="isUps(reply.ups) ? 'fa-heart-o' : 'fa-heart'"></i>
 	          						<span class="pull-left">{{reply.ups.length}}</span>
 	          					</div>
 					          	<div class="reply-btn" @click="toggleReply($index)">
@@ -24,8 +24,9 @@
 					</div>
 	  			</div>
 	  			<div class="reply-content">
-	  				{{{reply.content}}}
+	  				{{{reply.content}}}  
 	  			</div>
+	  			{{reply.isShowReply}}
 	  			<div class="reply-form" v-if="reply.isShowReply">
 	  				<form @submit.prevent="replyToComment($index)">
 				            	<textarea v-model="replyContent">@{{reply.author.loginname}} </textarea>
@@ -37,33 +38,53 @@
 	</div>
 </template>
 
-<script>	
+<script>
+import markdown from 'markdown'
 export default {
 	data() {
 		return {
-			userId:localStorage.userId || '',
-			isUps: ''
+			userId: localStorage.userId || '',
+			loginname: localStorage.loginname || ''
 		}
 	},
 	props: ['replies','topicId'],
 	methods: {
+		isUps (ups) {
+			return ups >= 0
+		},
+		toggleReply(index) {
+			if(!this.userId) {
+				var link = "/login?redirect=" + encodeURIComponent(this.$route.path)
+				this.$route.router.go(link)
+				return
+			}
+			var reply = this.replies[index] 
+			this.replies.forEach((r, i) => {
+				if (i !== index){
+					r.isShowReply = false
+				}
+			})
+			reply.isShowReply = reply.isShowReply
+		},
 		// 点赞
 		toggleUps(index) {
 			if(!this.userId) {
 				var link = "/login?redirect=" + encodeURIComponent(this.$route.path)
 				this.$route.router.go(link)
 				return
-			}else{
-				var reply = this.replies[index]
+			}
+			var reply = this.replies[index]
+			if(this.loginname !== reply.author.loginname) {
 				this.$http.post('http://www.vue-js.com/api/v1/reply/'+reply.id+'/ups',{accesstoken:localStorage.accesstoken}).then((res) => {
 		           	 		if(res.data.action === "down") {
 		           	 			var index = reply.ups.indexOf(this.topicId)
 		           	 			reply.ups.splice(index,1)
 		           	 		}else{
 		           	 			reply.ups.push(this.topicId)
-		           	 			this.isUps = res.data.action
 		           	 		}
 				})
+			}else{
+				alert("不能为自己点赞哦。^_^")
 			}
 		}
 	}

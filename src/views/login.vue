@@ -12,18 +12,6 @@ export default {
 			accessTokenInput: ''
 		}
 	},
-	props: {
-		isShowSidebar: {
-			type: Boolean,
-			required: true,
-			twoWay: true
-		},
-		isLogin: {
-			type: Boolean,
-			required: true,
-			twoWay: true
-		}
-	},
 	created(){
 		this.isShowSidebar = false
 	},
@@ -34,12 +22,13 @@ export default {
            	 			this.$http.post('http://www.vue-js.com/api/v1/accesstoken/', {accesstoken: this.token}).then((res) => {
 		           	 		if(res.data.success) {
 		           	 			localStorage.loginname = res.data.loginname
-								localStorage.avatar_url = res.data.avatar_url
-								localStorage.userId = res.data.id
-								localStorage.accesstoken = this.token
-								this.isLogin = true
-								var redirect = decodeURIComponent(this.$route.query.redirect || '/')
-								this.$route.router.go(redirect)
+						localStorage.avatar_url = res.data.avatar_url
+						localStorage.userId = res.data.id
+						localStorage.accesstoken = this.token
+						this.isLogin = true
+						console.log(res.data)
+						var redirect = decodeURIComponent(this.$route.query.redirect || '/')
+						this.$route.router.go(redirect)
 		           	 		}
 				})
            			}

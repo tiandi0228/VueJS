@@ -9,6 +9,7 @@
 </template>
 
 <script>
+
 import bartop from './BarTop.vue'
 import sidebar from './SideBar.vue'
 export default {

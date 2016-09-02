@@ -7,7 +7,7 @@
 
 		</div>
 		<div class="userPanel">
-			<img :src="topic.author.avatar_url">
+			<img :src="topic.author.avatar_url" />
 			<div>
 				<p class="one">{{topic.author.loginname}}</p>
 				<p class="two">发布时间：{{topic.create_at | getLastTimeStr true}}</p>

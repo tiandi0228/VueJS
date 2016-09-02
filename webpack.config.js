@@ -24,23 +24,11 @@ module.exports = {
     babel: {
         presets: ['es2015'],
         plugins: ['transform-runtime']
-    }
-}
-
-if (process.env.NODE_ENV === 'production') {
-    module.exports.plugins = [
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
-        new webpack.optimize.OccurenceOrderPlugin()
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            jQuery: "jquery",
+            $: "jquery"
+        })
     ]
-} else {
-    module.exports.devtool = '#source-map'
 }
