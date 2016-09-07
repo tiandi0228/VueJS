@@ -9,7 +9,7 @@ import App from './components/App.vue'
 Vue.use(vueResource)
 Vue.use(Router)
 Object.keys(filters).forEach((k) => {
-	Vue.filter(k, filters[k])
+    Vue.filter(k, filters[k])
 })
 var router = new Router()
 
