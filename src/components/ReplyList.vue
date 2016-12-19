@@ -125,7 +125,6 @@
 </template>
 
 <script>
-import markdown from 'markdown'
 export default {
 	data() {
 		return {
